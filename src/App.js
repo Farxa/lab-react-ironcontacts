@@ -21,6 +21,15 @@ const contactsList = contacts.map(contact => {
   )
 })
 
+const addRandomContact = () => {
+  const newContactsArr = contactsArr.slice();
+  newContactsArr.splice([fiveContacts], 1);
+  const randomContact = newContactsArr[Math.floor(Math.random() * (newContactsArr.length))];
+  
+  setContacts(contacts => [randomContact, ...contacts])
+
+}
+
   return (
     <div className="App">
       <header className="App-header">
@@ -28,6 +37,7 @@ const contactsList = contacts.map(contact => {
         <h1>IronContacts</h1>
       </header>
       <div>
+      <button onClick={addRandomContact}>Add Random Contact</button>
         <table>
           <thead>
             <tr>
