@@ -9,6 +9,15 @@ const fiveContacts = contactsArr.slice(0,5);
 
 const [contacts, setContacts] = useState(fiveContacts)
 
+
+const removeContact = (contactId) => {
+  const contactsCopy = [...contacts];
+  const removedContacts = contactsCopy.filter(contact => contact.id !== contactId);
+  
+  setContacts([removedContacts, ...contacts])
+}
+
+
 const contactsList = contacts.map(contact => {
   return (
   <tr key={contact.id}>
@@ -17,6 +26,7 @@ const contactsList = contacts.map(contact => {
   <td>{contact.popularity}</td>
   {contact.wonOscar && <td>🏆</td>}
   {contact.wonEmmy && <td>🏆</td>}
+  <td><button onClick={() => removeContact(contact.id)}>Delete</button></td>
   </tr>
   )
 })
