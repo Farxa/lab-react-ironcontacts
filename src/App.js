@@ -14,7 +14,7 @@ const removeContact = (contactId) => {
   const contactsCopy = [...contacts];
   const removedContacts = contactsCopy.filter(contact => contact.id !== contactId);
   
-  setContacts([removedContacts, ...contacts])
+  setContacts([...removedContacts])
 }
 
 
@@ -37,18 +37,18 @@ const addRandomContact = () => {
   newContactsArr.splice(0, 5);
   const randomContact = newContactsArr[Math.floor(Math.random() * (newContactsArr.length))];
   
-  setContacts(contacts => [randomContact, ...contacts])
+  setContacts(contacts => [...randomContact])
 }
 
 const sortByPopularity = () => {
   const sortedPopularity = contacts.sort((a,b) => b.popularity - a.popularity)
-  setContacts(contacts => [sortedPopularity, ...contacts])
+  setContacts(contacts => [...sortedPopularity])
 }
 
 
 const sortByName = () => {
   const sortedNames = contacts.sort((a, b) => a.name.localeCompare(b.name));
-  setContacts(contacts => [sortedNames, ...contacts])
+  setContacts(contacts => [...sortedNames])
 }
 
 
