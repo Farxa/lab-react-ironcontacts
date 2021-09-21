@@ -12,7 +12,7 @@ const [contacts, setContacts] = useState(fiveContacts)
 const contactsList = contacts.map(contact => {
   return (
   <tr key={contact.id}>
-  <td><img src={contact.pictureUrl} className='contactImg'/></td>
+  <td><img src={contact.pictureUrl} className='contactImg' alt="contact picture"/></td>
   <td>{contact.name}</td>
   <td>{contact.popularity}</td>
   {contact.wonOscar && <td>🏆</td>}
@@ -21,14 +21,27 @@ const contactsList = contacts.map(contact => {
   )
 })
 
+
 const addRandomContact = () => {
   const newContactsArr = contactsArr.slice();
   newContactsArr.splice(0, 5);
   const randomContact = newContactsArr[Math.floor(Math.random() * (newContactsArr.length))];
-  console.log(newContactsArr)
+  
   setContacts(contacts => [randomContact, ...contacts])
-
 }
+
+const sortByPopularity = () => {
+  const sortedPopularity = contacts.sort((a,b) => b.popularity - a.popularity)
+  setContacts(contacts => [sortedPopularity, ...contacts])
+}
+
+
+const sortByName = () => {
+  const sortedNames = contacts.sort((a, b) => a.name.localeCompare(b.name));
+  setContacts(contacts => [sortedNames, ...contacts])
+}
+
+
 
   return (
     <div className="App">
@@ -38,6 +51,8 @@ const addRandomContact = () => {
       </header>
       <div>
       <button onClick={addRandomContact}>Add Random Contact</button>
+      <button onClick={sortByPopularity}>Sort by popularity</button>
+      <button onClick={sortByName}>Sort by name</button> 
         <table>
           <thead>
             <tr>
