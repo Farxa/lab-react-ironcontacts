@@ -23,9 +23,9 @@ const contactsList = contacts.map(contact => {
 
 const addRandomContact = () => {
   const newContactsArr = contactsArr.slice();
-  newContactsArr.splice([fiveContacts], 1);
+  newContactsArr.splice(0, 5);
   const randomContact = newContactsArr[Math.floor(Math.random() * (newContactsArr.length))];
-  
+  console.log(newContactsArr)
   setContacts(contacts => [randomContact, ...contacts])
 
 }
