@@ -37,7 +37,7 @@ const addRandomContact = () => {
   newContactsArr.splice(0, 5);
   const randomContact = newContactsArr[Math.floor(Math.random() * (newContactsArr.length))];
   
-  setContacts(contacts => [...randomContact])
+  setContacts(contacts => [randomContact, ...contacts])
 }
 
 const sortByPopularity = () => {
