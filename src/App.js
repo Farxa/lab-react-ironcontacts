@@ -36,8 +36,16 @@ const addRandomContact = () => {
   const newContactsArr = contactsArr.slice();
   newContactsArr.splice(0, 5);
   const randomContact = newContactsArr[Math.floor(Math.random() * (newContactsArr.length))];
-  
-  setContacts(contacts => [randomContact, ...contacts])
+  const randomId = randomContact.id
+  let inList = false;
+      for (let contact of contacts) {
+        if (randomId === contact.id) {
+           inList = true
+        }
+      }
+    if (!inList) {
+      setContacts(contacts => [randomContact, ...contacts])
+    }
 }
 
 const sortByPopularity = () => {
